@@ -20,6 +20,7 @@ class Led
     void iniciar();
     void atualizar();
     void alternar();
+    //TODO desligarPiscar();
 };
 
 #endif
