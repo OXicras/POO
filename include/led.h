@@ -13,14 +13,15 @@ class Led
     bool _estaPiscando;
     uint32_t _tempoEsperaAlternar_ms;
 
-    Led(int pino);
+    Led(int pino, bool estadoLed);
     void ligar();
     void desligar();
     void ativarPiscar(uint32_t tempoEspera);
     void iniciar();
     void atualizar();
     void alternar();
-    //TODO desligarPiscar();
+    void desligarPiscar();
+    uint8_t getPinoLed();
 };
 
 #endif
