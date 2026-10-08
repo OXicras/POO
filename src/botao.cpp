@@ -18,22 +18,47 @@ void Botao::atualizar()
 
     if (_estadoAtualBotao != _estadoAnteriorBotao)
     {
-        _ultimaMudanca_ms = millis();
         _estadoAnteriorBotao = _estadoAtualBotao;
+        _ultimaMudanca_ms = millis();
+        return;
     }
-    else if (tempoDecorrido() > _tempoDebounce_ms)
-    {
-        const bool acaoExecutada = (_estadoUltimaAcao == _estadoAtualBotao);
 
-        if (!acaoExecutada)
-        {
-            _estadoUltimaAcao = _estadoAtualBotao;
-            const bool botaoPressionado = !_estadoAtualBotao;
-            
-            botaoPressionado ? _pressionou = true : _soltou = true;
-        }
-    }
+    if(tempoDecorrido() < _tempoDebounce_ms)
+        return;
+
+    if(_estadoAtualBotao == _estadoAnteriorBotao)
+        return;
+
+    _estadoAnteriorBotao = _estadoAtualBotao;
+
+    const bool botaoPressionado = !_estadoAtualBotao;
+    botaoPressionado ? _pressionou = true : _soltou = true;
 }
+
+// void Botao::atualizar()
+// {
+//     _pressionou = false;
+//     _soltou = false;
+//     _estadoAtualBotao = digitalRead(_pinBotao);
+
+//     if (_estadoAtualBotao != _estadoAnteriorBotao)
+//     {
+//         _ultimaMudanca_ms = millis();
+//         _estadoAnteriorBotao = _estadoAtualBotao;
+//     }
+//     else if (tempoDecorrido() > _tempoDebounce_ms)
+//     {
+//         const bool acaoExecutada = (_estadoUltimaAcao == _estadoAtualBotao);
+
+//         if (!acaoExecutada)
+//         {
+//             _estadoUltimaAcao = _estadoAtualBotao;
+//             const bool botaoPressionado = !_estadoAtualBotao;
+            
+//             botaoPressionado ? _pressionou = true : _soltou = true;
+//         }
+//     }
+// }
 
 bool Botao::pressionou()
 {

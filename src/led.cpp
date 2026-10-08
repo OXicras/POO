@@ -1,5 +1,10 @@
 #include "led.h"
 
+Led::Led (int pino)
+{
+    _pinLed = pino;
+}
+
 Led::Led(int pino, bool estadoLed)
 {
     _pinLed = pino;

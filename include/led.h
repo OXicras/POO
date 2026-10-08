@@ -13,6 +13,7 @@ class Led
     bool _estaPiscando;
     uint32_t _tempoEsperaAlternar_ms;
 
+    Led(int pino);
     Led(int pino, bool estadoLed);
     void ligar();
     void desligar();
