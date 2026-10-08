@@ -21,7 +21,7 @@ void Botao::atualizar()
         _ultimaMudanca_ms = millis();
         _estadoAnteriorBotao = _estadoAtualBotao;
     }
-    else if (millis() - _ultimaMudanca_ms > _tempoDebounce_ms)
+    else if (tempoDecorrido() > _tempoDebounce_ms)
     {
         const bool acaoExecutada = (_estadoUltimaAcao == _estadoAtualBotao);
 
@@ -43,4 +43,9 @@ bool Botao::pressionou()
 bool Botao::soltou()
 {
     return _soltou;
+}
+
+uint32_t Botao::tempoDecorrido()
+{
+    return (millis() - _ultimaMudanca_ms);
 }
