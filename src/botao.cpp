@@ -2,7 +2,6 @@
 
 Botao::Botao(uint8_t pino) : _pinBotao(pino)
 {
-
 }
 
 void Botao::iniciar()
@@ -26,10 +25,10 @@ void Botao::atualizar()
     if(tempoDecorrido() < _tempoDebounce_ms)
         return;
 
-    if(_estadoAtualBotao == _estadoAnteriorBotao)
+    if(_estadoAtualBotao == _estadoUltimaAcao)
         return;
 
-    _estadoAnteriorBotao = _estadoAtualBotao;
+    _estadoUltimaAcao = _estadoAtualBotao;
 
     const bool botaoPressionado = !_estadoAtualBotao;
     botaoPressionado ? _pressionou = true : _soltou = true;
